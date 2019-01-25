@@ -17,10 +17,15 @@ End Sub
 'Clear cell but not formats
 Sub ClearCellsOnlyData()
     Range("I:P").Clear
+    
 End Sub
 
 'Find tickers, total volume, yearly change and percentage change
 Sub Calculate()
+    Dim Ticker As Integer
+    Dim vol As Integer
+    Dim Row As Integer
+    Dim i As Long
 
 '***Finding Tickers***
     Cells(1, "I") = "Tickers"
@@ -43,7 +48,7 @@ Sub Calculate()
     Next i
     
 '***Finding total volume for each ticker***
-    Cells(1, "J") = "Volume"
+    Cells(1, "J") = "Total Stock Volume"
     
     'Start count at 2 to set row at 2 in Sum Volume column
     vol = 2
@@ -98,20 +103,26 @@ Sub Calculate()
         If Cells(i - 1, 1) <> Cells(i, 1) Then
             'Checks to see that no value divides 0
             If Cells(i, "C") <> 0 Then
+                'If value divides 0 then output 0 as result
                 Cells(Row + 1, "L") = Format(Cells(Row + 1, "K") / Cells(i, "C"), "Percent")
             Else
                 Cells(Row + 1, "L") = Format(0, "Percent")
                 
             End If
+            
         Row = Row + 1
         
         End If
     
     Next i
+    
 End Sub
 
 Sub GreatestChange()
-
+    Dim Row As Integer
+    Dim i As Long
+    
+    
     'Label Cells
     Cells(2, "N") = "Greatest % Increase"
     Cells(3, "N") = "Greatest % Decrease"
