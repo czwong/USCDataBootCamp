@@ -1,1 +1,1 @@
-# HW Assignments
+# Homework Assignments
