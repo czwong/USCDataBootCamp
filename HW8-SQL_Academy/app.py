@@ -27,6 +27,7 @@ from flask import Flask, jsonify
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
 
+# API Route to home directory
 @app.route("/")
 def welcome():
     """List all available api routes"""
@@ -39,10 +40,12 @@ def welcome():
         f"<br/>Return a JSON list of the minimum temperature, the average temperature, and the max temperature for dates between the start and end date inclusive.<br/>Example API Endpoint: /api/v1.0/2014-05-13/2014-05-20<br/>-----------------------------------<br/>/api/v1.0/start_date/end_date<br/>-----------------------------------<br/>"
     )
 
+# API Route to find precipitation for all dates
 @app.route("/api/v1.0/precipitation")
 def precipitation():
     """List of dates and precipitation values"""
     results = session.query(Measurement.date, Measurement.prcp).all()
+    
     result_list = []
 
     for result in results:
@@ -51,6 +54,7 @@ def precipitation():
         )
     return jsonify(result_list)
 
+# API Route to find all active stations
 @app.route("/api/v1.0/stations")
 def stations():
     """List of stations"""
@@ -60,6 +64,7 @@ def stations():
 
     return(jsonify(stations))
 
+# API Route to find observed temperature for last twelve months since date of last data point
 @app.route("/api/v1.0/tobs")
 def tobs():
     # Perform query to find date for last data point
@@ -89,6 +94,7 @@ def tobs():
 
     return(jsonify(tobs_list))
 
+# API Route to find tmin, tavg, and tmax from given start date to date of last data point
 @app.route("/api/v1.0/<start_date>")
 def start(start_date):
     """TMIN, TAVG, and TMAX for a list of dates.
@@ -99,25 +105,41 @@ def start(start_date):
     Returns:
         TMIN, TAVE, and TMAX
     """
-    last_date = session.query(Measurement.date).order_by(Measurement.date.desc()).first()
-    
+    # Find TMIN, TAVG, and TMAX
     results = session.query(func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).\
-        filter(Measurement.date >= start_date).all()
-    
-    temp_list = []
-    for result in results:
-        temp_dict = {
-                    'start_date': start_date,
-                    'end_date': last_date[0],
-                    'tmin' : result[0], 
-                    'tavg': result[1], 
-                    'tmax': result[2]
-                        }
+            filter(Measurement.date >= start_date).\
+            all()
 
-        temp_list.append(temp_dict)
+    # List of dates from start date to date of last data point
+    dates = session.query(Measurement.date).\
+            filter(Measurement.date >= start_date).\
+            order_by(Measurement.date.asc()).\
+            all()
 
-    return(jsonify(temp_list))
+    try:
+        # Get start date and last date from results list
+        start_day = dates[0][0]
+        last_day = dates[-1][0]
+        
+        # Append results as dictionary into empty list
+        temp_list = []
+        for result in results:
+            temp_dict = {
+                        'start_date': start_day,
+                        'end_date': last_day,
+                        'tmin' : result[0], 
+                        'tavg': result[1], 
+                        'tmax': result[2]
+                            }
 
+            temp_list.append(temp_dict)
+
+        return(jsonify(temp_list))
+
+    except (IndexError, KeyError):
+        return(jsonify({"error": f"Data from {start_date} could not be found."}), 404)
+
+# API Route to find tmin, tavg, and tmax from given start date to end date
 @app.route("/api/v1.0/<start_date>/<end_date>")
 def start_end(start_date, end_date):
     """TMIN, TAVG, and TMAX for a list of dates.
@@ -129,22 +151,41 @@ def start_end(start_date, end_date):
     Returns:
         TMIN, TAVE, and TMAX
     """
+    # Find TMIN, TAVG, and TMAX
     results = session.query(func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).\
-        filter(Measurement.date >= start_date).filter(Measurement.date <= end_date).all()
+        filter(Measurement.date >= start_date).\
+        filter(Measurement.date <= end_date).\
+        all()
 
-    temp_list = []
-    for result in results:
-        temp_dict = {
-                    'start_date': start_date,
-                    'end_date': end_date,
-                    'tmin' : result[0], 
-                    'tavg': result[1], 
-                    'tmax': result[2]
-                        }
+    # List of dates from start date to last date
+    dates = session.query(Measurement.date).\
+            filter(Measurement.date >= start_date).\
+            filter(Measurement.date <= end_date).\
+            order_by(Measurement.date.asc()).\
+            all()
 
-        temp_list.append(temp_dict)
+    try:
+        # Get start date and last date from results list
+        start_day = dates[0][0]
+        last_day = dates[-1][0]
+        
+        # Append results as dictionary into empty list
+        temp_list = []
+        for result in results:
+            temp_dict = {
+                        'start_date': start_day,
+                        'end_date': last_day,
+                        'tmin' : result[0], 
+                        'tavg': result[1], 
+                        'tmax': result[2]
+                            }
 
-    return(jsonify(temp_list))
+            temp_list.append(temp_dict)
+
+        return(jsonify(temp_list))
+
+    except (IndexError, KeyError):
+        return(jsonify({"ERROR": f"Data from {start_date} to {end_date} could not be found."}), 404)
 
 if __name__ == '__main__':
     app.run(debug=True)
