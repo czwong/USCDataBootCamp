@@ -32,12 +32,12 @@ app.config['JSON_SORT_KEYS'] = False
 def welcome():
     """List all available api routes"""
     return (
-        f"Available Routes:<br/>"
-        f"<br/>Return a JSON list of dates and precipition values.<br/>---------------------------<br/>/api/v1.0/precipitation<br/>---------------------------<br/>"
-        f"<br/>Return a JSON list of stations from the dataset.<br/>---------------------<br/>/api/v1.0/stations<br/>---------------------<br/>"
-        f"<br/>Return a JSON list of Temperature Observations (tobs) a year from the last data point.<br/>-----------------<br/>/api/v1.0/tobs<br/>-----------------<br/>"
-        f"<br/>Return a JSON list of the minimum temperature, the average temperature, and the max temperature for all dates greater than and equal to the start date.<br/>Example API Endpoint: /api/v1.0/2014-05-13<br/>------------------------<br/>/api/v1.0/start_date<br/>------------------------<br/>"
-        f"<br/>Return a JSON list of the minimum temperature, the average temperature, and the max temperature for dates between the start and end date inclusive.<br/>Example API Endpoint: /api/v1.0/2014-05-13/2014-05-20<br/>-----------------------------------<br/>/api/v1.0/start_date/end_date<br/>-----------------------------------<br/>"
+        f"<b> Available Routes:</b><br></br>"
+        f"<br>Return a JSON list of dates and precipition values.<b><br>----------------------------<br/>/api/v1.0/precipitation<br>----------------------------<br/></b>"
+        f"<br>Return a JSON list of stations from the dataset.<b><br>----------------------<br/>/api/v1.0/stations<br>----------------------<br/></b>"
+        f"<br>Return a JSON list of Temperature Observations (tobs) a year from the last data point.<b><br>-----------------<br/>/api/v1.0/tobs<br>-----------------<br/></b>"
+        f"<br>Return a JSON list of the minimum temperature, the average temperature, and the max temperature for all dates greater than and equal to the start date.<br/>Example API Endpoint: /api/v1.0/2014-05-13<b><br/>-------------------------<br/>/api/v1.0/start_date<br/>-------------------------<br/></b>"
+        f"<br>Return a JSON list of the minimum temperature, the average temperature, and the max temperature for dates between the start and end date inclusive.<br/>Example API Endpoint: /api/v1.0/2014-05-13/2014-05-20<b><br/>-------------------------------------<br/>/api/v1.0/start_date/end_date<br/>-------------------------------------<br/></b>"
     )
 
 # API Route to find precipitation for all dates
