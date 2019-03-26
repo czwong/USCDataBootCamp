@@ -1,3 +1,7 @@
+# Instructions
+### Step 1 (Climate Analysis and Exploration) of the homework can be viewed on [notebook](climate_starter.ipynb).
+### Step 2 (Climate App) of the homework can be run using [app](app.py) on the terminal.
+
 # Surfs Up!
 
 ![surfs-up.jpeg](Images/surfs-up.jpeg)
