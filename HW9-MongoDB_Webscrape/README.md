@@ -1,4 +1,4 @@
-### Repository Contents
+## Repository Contents
 
 - [`scrape_mars.py`](scrape_mars.py) contains function to scrape websites
 - [`app.py`](app.py) main file to run functions to output results as dictionary onto mongo and display as html
