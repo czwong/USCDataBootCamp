@@ -1,5 +1,6 @@
 ## Repository Contents
 
+- [`mission_to_mars.ipynb`](Resources/mission_to_mars.ipynb) Jupyter Notebook file to complete all of scraping and analysis tasks
 - [`scrape_mars.py`](scrape_mars.py) contains function to scrape websites
 - [`app.py`](app.py) main file to run functions to output results as dictionary onto mongo and display as html
 - [`index.html`](templates/index.html) a template HTML that will take the mars data dictionary and display all of the data in the appropriate HTML elements
