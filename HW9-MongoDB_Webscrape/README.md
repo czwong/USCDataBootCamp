@@ -17,7 +17,7 @@ def init_browser():
     return Browser('chrome', **executable_path, headless=False)
 ```
 
-Some module you will need to run [`app.py`](app.py) are PyMongo / bs4 
+Some modules you will need to run [`app.py`](app.py) are PyMongo / bs4 
 
 Installations are as follow:
 
