@@ -7,3 +7,4 @@
 
 
 ## Webpage Display
+(static/images/screen_shot.png)
