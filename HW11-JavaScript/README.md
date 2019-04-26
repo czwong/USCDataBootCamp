@@ -7,4 +7,4 @@
 
 
 ## Webpage Display
-(static/images/screen_shot.png)
+[!Screenshot](static/images/screen_shot.png)
