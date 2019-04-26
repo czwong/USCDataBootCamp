@@ -10,6 +10,10 @@ body {
   margin: 0;
 }
 
+table {
+  border: 1px solid white;
+}
+
 th {
   color: lightcyan;
   background-color: darkcyan;
