@@ -10,11 +10,13 @@ body {
   margin: 0;
 }
 
-th, tr {
-  border: 1px solid white;
+th {
+  color: lightcyan;
+  background-color: darkcyan;
 }
 
 td {
+  border: 1px solid white;
   height: 50px;
 }
 
