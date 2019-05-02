@@ -76,7 +76,5 @@ function buildGauge(wfreq) {
         }
     };
 
-    console.log(d3.select('#gauge'));
-
     Plotly.newPlot('gauge', data, layout);
 };

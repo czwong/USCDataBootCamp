@@ -65,8 +65,6 @@ function buildCharts(sample) {
             }
         };
 
-        console.log(layout1);
-
         Plotly.newPlot("bubble", data1, layout1);
     });
 
