@@ -16,7 +16,7 @@ Some modules you will need to run [`app.py`](app.py) are as follow:
 - pip install flask_sqlalchemy
 - pip install sqlalchemy
 
-Install requirement in the console
+Install requirements in the console
 ```
 $ pip install -r requirements.txt
 ```
