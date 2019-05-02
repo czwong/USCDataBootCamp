@@ -24,7 +24,7 @@ $ pip install -r requirements.txt
 
 ## Running Application
 
-Run [app.py](app.py) on the console
+Run [`app.py`](app.py) on the console
 ```
 $ python app.py
 ```
