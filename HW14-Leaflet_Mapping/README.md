@@ -9,3 +9,6 @@
 ## Before Opening
 
 Change API_KEY to yours in [`config.js`](config.js)
+
+## Webpage
+(Earthquake_Image.png)
