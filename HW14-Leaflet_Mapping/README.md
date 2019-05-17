@@ -11,4 +11,4 @@
 Change API_KEY to yours in [`config.js`](config.js)
 
 ## Webpage
-![Screenshot](Earthquake_Image.png)
+[!Screenshot](Earthquake_Image.png)
