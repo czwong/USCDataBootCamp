@@ -6,6 +6,6 @@
 - [`TileLayer.Grayscale.js`](TileLayer.Grayscale.js) Allow grayscale option for maps
 - [`style.css`](style.css) CSS file to format map
 
-## Before Starting
+## Before Opening
 
 Change API_KEY to yours in [`config.js`](config.js)
