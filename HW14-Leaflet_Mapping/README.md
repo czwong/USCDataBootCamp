@@ -10,5 +10,5 @@
 
 Change API_KEY to yours in [`config.js`](config.js)
 
-## Webpage
+## Webpage Display
 ![Screenshot](Earthquake_Map.png)
