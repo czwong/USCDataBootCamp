@@ -8,4 +8,4 @@
 
 ## Before Starting
 
-Change api_key to yours in [config.js](config.js)
+Change api_key to yours in [`config.js`](config.js)
